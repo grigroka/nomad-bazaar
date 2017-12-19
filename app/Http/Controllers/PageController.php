@@ -32,7 +32,7 @@ class PageController extends Controller
 
         Mail::send('emails.contact', $data, function($message) use($data) {
             $message->from($data['email']);
-            $message->to('example@gmail.com');
+            $message->to('example@gmail.com'); // Contact us destination address.
             $message->subject($data['subject']);
         });
 
