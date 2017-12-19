@@ -19,7 +19,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
+                <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
