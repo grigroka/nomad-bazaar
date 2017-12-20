@@ -25,4 +25,5 @@ Route::post('contact', 'PageController@postContact');
 Route::get('about', 'PageController@getAbout');
 
 //Listings routes.
-Route::resource('listings', 'ListingController');
+Route::resource('listings', 'ListingController')->except('store');
+Route::post('listings/{user_id}', 'ListingController@store')->name('listings.store');

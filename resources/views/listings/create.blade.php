@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>Create New Listing</h1>
             <hr>
-            <form action="{{ route('listings.store') }}" method="POST">
+            <form action="{{ route('listings.store', Auth::user()->id) }}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title:</label>

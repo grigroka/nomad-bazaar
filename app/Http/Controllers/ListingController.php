@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Listing;
 use Illuminate\Http\Request;
 use Session;
-use App\User;
+use Auth;
 
 class ListingController extends Controller
 {
@@ -41,8 +41,8 @@ class ListingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-//    TODO Continue here, can't get user_id.
-    public function store(Request $request, $user_id)
+
+    public function store(Request $request)
     {
 //        Validate data.
         $this->validate($request, [
@@ -51,7 +51,7 @@ class ListingController extends Controller
             'body' => 'required'
         ]);
 //        Store in the DB.
-        $user = User::find($user_id);
+        $user = Auth::user()->id;
         $listing = new Listing;
 
         $listing->title = $request->title;
