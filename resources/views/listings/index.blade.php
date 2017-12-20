@@ -14,18 +14,18 @@
         <div class="col-md-12">
             <table class="table">
                 <tbody>
-                {{--@foreach($listings as $listing)--}}
+                @foreach($listings as $listing)
                 <tr>
                     <td>Logo</td>
                     <td>
-                        Listing Name
+                        {{ $listing->title }}
                         <br>
-                        <small>Company Name</small>
+                        <small>{{ $listing->company_name }}</small>
                     </td>
                     <td>Tags</td>
-                    <td>Added Time</td>
+                    <td>{{ date('G:i - F nS, Y' ,strtotime($listing->created_at)) }}</td>
                 </tr>
-                {{--@endforeach--}}
+                @endforeach
                 </tbody>
             </table>
             <div class="text-center">

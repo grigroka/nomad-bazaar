@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Listing;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $id = Auth::user()->id;
+        $listings = Listing::where('user_id', '=', $id)->orderBy('id', 'desc')->paginate(10);
+
+        return view('user.home')->withListings($listings);
     }
 }

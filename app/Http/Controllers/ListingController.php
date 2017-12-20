@@ -77,7 +77,6 @@ class ListingController extends Controller
     {
         $listing = Listing::find($id);
         return view('listings.show')->withListing($listing);
-//        TODO continue with Listing CRUD.
     }
 
     /**
@@ -88,7 +87,7 @@ class ListingController extends Controller
      */
     public function edit(Listing $listing)
     {
-        //
+        return view('listings.edit')->withListing($listing);
     }
 
     /**
