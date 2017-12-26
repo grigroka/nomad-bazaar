@@ -99,7 +99,21 @@ class ListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
-        //
+        // Validate data.
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'company_name' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
+        $listing->title = $request->title;
+        $listing->company_name = $request->company_name;
+        $listing->body = $request->body;
+        $listing->save();
+
+        Session::flash('success', 'Listing updated');
+
+        return redirect()->route('listings.show', $listing->id);
     }
 
     /**
@@ -110,6 +124,10 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        //
+        $listing->delete();
+
+        Session::flash('success', 'Listing has been deleted.');
+        return redirect()->route('home');
+
     }
 }

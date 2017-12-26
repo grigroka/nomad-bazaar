@@ -1,28 +1,31 @@
 @extends('layouts.app')
 <?php $titleTag = htmlspecialchars($listing->title); ?>
 @section('title', "| Edit $titleTag")
-{{--TODO remake create form into edit.--}}
+
 @section('content')
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>Edit Listing</h1>
             <hr>
-            <form action="{{ route('listings.store', Auth::user()->id) }}" method="POST">
+            <form action="{{ route('listings.update', $listing->id) }}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input id="title" name="title" type="text"  class="form-control">
+                    <textarea id="title" name="title" class="form-control">{{ $listing->title }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="company_name">Company Name:</label>
-                    <input id="company_name" name="company_name" type="text" class="form-control">
+                    <textarea id="company_name" name="company_name" class="form-control">{{ $listing->company_name }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="body">Description:</label>
-                    <textarea id="body" name="body" class="form-control"></textarea>
+                    <textarea id="body" name="body" class="form-control" rows="15">{{ $listing->body }}</textarea>
                 </div>
-                <input type="submit" value="Post Listing" class="btn btn-success btn-block">
+                <input type="submit" value="Save Changes" class="btn btn-success btn-block">
+                {{--HTML forms don't support PUT, PATCH, DELETE. Using hidden fields to spoof required method.--}}
+                <input type="hidden" name="_method" value="PATCH">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
         </div>
     </div>

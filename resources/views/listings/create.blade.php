@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="body">Description:</label>
-                    <textarea id="body" name="body" class="form-control"></textarea>
+                    <textarea id="body" name="body" class="form-control" rows="15"></textarea>
                 </div>
                 <input type="submit" value="Post Listing" class="btn btn-success btn-block">
             </form>

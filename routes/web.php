@@ -11,14 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome');
-});
-
 //Authentication routes.
 Auth::routes();
 
 //Pages routes.
+Route::get('/', 'PageController@getIndex');
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('contact', 'PageController@getContact');
 Route::post('contact', 'PageController@postContact');
@@ -26,4 +23,3 @@ Route::get('about', 'PageController@getAbout');
 
 //Listings routes.
 Route::resource('listings', 'ListingController');
-//Route::post('listings/{user_id}', 'ListingController@store')->name('listings.store'); // Seems to be unnecessary.

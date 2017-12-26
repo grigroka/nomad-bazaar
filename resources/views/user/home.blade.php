@@ -28,7 +28,11 @@
                     <br>
                     <a href="{{ route('listings.show', $listing->id) }}" class="btn btn-default">View</a>
                     <a href="{{ route('listings.edit', $listing->id) }}" class="btn btn-success">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <form action="{{ route('listings.destroy', $listing->id) }}" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    </form>
                 </div>
                 <div class="col-md-6 panel-body">
                     <p>{{ substr(strip_tags($listing->body), 0, 700) }} {{ strlen(strip_tags($listing->body)) > 700 ? "..." : "" }}</p>

@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Listing;
 use Illuminate\Http\Request;
 use Mail;
 use Session;
+use DB;
 
 class PageController extends Controller
 {
+    public function getIndex() {
+        $listings = Listing::orderBy('created_at', 'desc')->whereDate('created_at', DB::raw('CURDATE()'))->get();
+        return view('pages.welcome')->withListings($listings);
+    }
+
     public function getAbout()
     {
         return view('pages.about');
