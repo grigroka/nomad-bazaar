@@ -24,6 +24,7 @@
                     </td>
                     <td>Tags</td>
                     <td>{{ date('G:i - F nS, Y' ,strtotime($listing->created_at)) }}</td>
+                    <td><a href="{{ route('listings.show', $listing->id) }}" class="btn btn-default">View</a></td>
                 </tr>
                 @endforeach
                 </tbody>
