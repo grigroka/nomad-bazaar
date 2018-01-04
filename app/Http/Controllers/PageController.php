@@ -11,7 +11,7 @@ use DB;
 class PageController extends Controller
 {
     public function getIndex() {
-        $listings = Listing::orderBy('created_at', 'desc')->whereDate('created_at', DB::raw('CURDATE()'))->get();
+        $listings = Listing::orderBy('created_at', 'desc')->paginate(5);
         return view('pages.welcome')->withListings($listings);
     }
 

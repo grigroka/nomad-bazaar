@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>All Listings</h1>
-            <small>Total listings: {{ $listings->count() }}</small>
+            <small>Total listings: {{ $listings->total() }}</small>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
                         <small>{{ $listing->company_name }}</small>
                     </td>
                     <td>Tags</td>
-                    <td>{{ date('G:i - F nS, Y' ,strtotime($listing->created_at)) }}</td>
+                    <td>{{ date('G:i - F jS, Y' ,strtotime($listing->created_at)) }}</td>
                     <td><a href="{{ route('listings.show', $listing->id) }}" class="btn btn-default">View</a></td>
                 </tr>
                 @endforeach

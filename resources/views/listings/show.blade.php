@@ -8,8 +8,9 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>{{ $listing->title }}</h1>
             <h4>{{ $listing->company_name }}</h4>
-            <small>{{ date('F nS, Y - G:i' ,strtotime($listing->created_at)) }}</small>
+            <small>{{ date('F jS, Y - G:i' ,strtotime($listing->created_at)) }}</small>
             <hr>
+            {{--TODO After implementing editor make body output HTML from DB. Use purifier to clean data before store fucntion.--}}
             <p>{{ $listing->body }}</p>
         </div>
     </div>

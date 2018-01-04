@@ -38,6 +38,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('tags.index') }}">Tags</a></li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="{{ route('logout') }}"

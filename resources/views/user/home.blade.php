@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-10">
             <h1>All Listings</h1>
-            <small>Total listings: {{ $listings->count() }}</small>
+            <small>Total listings: {{ $listings->total() }}</small>
 
         </div>
 
@@ -41,4 +41,7 @@
         </div>
         <hr>
     @endforeach
+    <div class="text-center">
+        {{ $listings->links() }}
+    </div>
 @endsection

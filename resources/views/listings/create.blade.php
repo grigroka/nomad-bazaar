@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <h1>Create New Listing</h1>
             <hr>
             <form action="{{ route('listings.store', Auth::user()->id) }}" method="POST">
@@ -23,6 +23,19 @@
                 </div>
                 <input type="submit" value="Post Listing" class="btn btn-success btn-block">
             </form>
+        </div>
+        <div class="col-md-3">
+            <div class="well">
+                <h2>Create New Tag</h2>
+                <form action="{{ route('tags.store') }}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                    </div>
+                    <input type="submit" value="Create New Tag" class="btn btn-primary">
+                </form>
+            </div>
         </div>
     </div>
 

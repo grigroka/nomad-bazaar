@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $listings = Listing::where('user_id', '=', $id)->orderBy('id', 'desc')->paginate(10);
+        $listings = Listing::where('user_id', '=', $id)->orderBy('id', 'desc')->paginate(3);
 
         return view('user.home')->withListings($listings);
     }
