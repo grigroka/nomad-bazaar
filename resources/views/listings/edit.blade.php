@@ -19,6 +19,16 @@
                     <textarea id="company_name" name="company_name" class="form-control">{{ $listing->company_name }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="tags">Tags:</label>
+                    {{--Add [] in select name atribute to get array of multiple selects instead of sum of selects (default)--}}
+                    <select name="tags[]" id="tags" multiple="multiple" class="form-control">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                    <small>CTRL + Click to select multiple</small>
+                </div>
+                <div class="form-group">
                     <label for="body">Description:</label>
                     <textarea id="body" name="body" class="form-control" rows="15">{{ $listing->body }}</textarea>
                 </div>

@@ -22,7 +22,13 @@
                         <br>
                         <small>{{ $listing->company_name }}</small>
                     </td>
-                    <td>Tags</td>
+                    <td>
+                        <div class="tags">
+                            @foreach($listing->tags as $tag)
+                                <span class="label label-default">{{ $tag->name }}</span>
+                            @endforeach
+                        </div>
+                    </td>
                     <td>{{ date('G:i - F jS, Y' ,strtotime($listing->created_at)) }}</td>
                     <td><a href="{{ route('listings.show', $listing->id) }}" class="btn btn-default">View</a></td>
                 </tr>

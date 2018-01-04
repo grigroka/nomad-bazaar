@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Listing;
+use App\Tag;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
@@ -32,7 +33,8 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return view('listings.create');
+        $tags = Tag::all();
+        return view('listings.create')->withTags($tags);
     }
 
     /**
@@ -61,6 +63,8 @@ class ListingController extends Controller
 
         $listing->save();
 
+        $listing->tags()->sync($request->tags, false);
+
         Session::flash('success', 'The listing was successfully saved!');
 
 //        Redirect.
@@ -87,7 +91,8 @@ class ListingController extends Controller
      */
     public function edit(Listing $listing)
     {
-        return view('listings.edit')->withListing($listing);
+        $tags = Tag::all();
+        return view('listings.edit')->withListing($listing)->withTags($tags);
     }
 
     /**
@@ -111,6 +116,8 @@ class ListingController extends Controller
         $listing->body = $request->body;
         $listing->save();
 
+        $listing->tags()->sync($request->tags);
+
         Session::flash('success', 'Listing updated');
 
         return redirect()->route('listings.show', $listing->id);
@@ -124,6 +131,7 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
+        $listing->tags()->detach();
         $listing->delete();
 
         Session::flash('success', 'Listing has been deleted.');

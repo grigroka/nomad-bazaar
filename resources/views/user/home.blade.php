@@ -36,6 +36,11 @@
                 </div>
                 <div class="col-md-6 panel-body">
                     <p>{{ substr(strip_tags($listing->body), 0, 700) }} {{ strlen(strip_tags($listing->body)) > 700 ? "..." : "" }}</p>
+                    <div class="tags">
+                        @foreach($listing->tags as $tag)
+                            <span class="label label-default">{{ $tag->name }}</span>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

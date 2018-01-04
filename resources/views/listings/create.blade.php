@@ -18,24 +18,21 @@
                     <input id="company_name" name="company_name" type="text" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label for="tags">Tags:</label>
+                    {{--Add [] in select name atribute to get array of multiple selects instead of sum of selects (default)--}}
+                    <select name="tags[]" id="tags" multiple="multiple" class="form-control">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                    <small>CTRL + Click to select multiple</small>
+                </div>
+                <div class="form-group">
                     <label for="body">Description:</label>
                     <textarea id="body" name="body" class="form-control" rows="15"></textarea>
                 </div>
                 <input type="submit" value="Post Listing" class="btn btn-success btn-block">
             </form>
-        </div>
-        <div class="col-md-3">
-            <div class="well">
-                <h2>Create New Tag</h2>
-                <form action="{{ route('tags.store') }}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control">
-                    </div>
-                    <input type="submit" value="Create New Tag" class="btn btn-primary">
-                </form>
-            </div>
         </div>
     </div>
 

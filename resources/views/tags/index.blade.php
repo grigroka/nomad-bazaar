@@ -9,7 +9,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Listings</th>
                 </tr>
@@ -18,7 +17,6 @@
                 <tbody>
                 @foreach ($tags as $tag)
                     <tr>
-                        <th>{{ $tag->id }}</th>
                         <td><a href="{{ route('tags.show', $tag->id) }}">{{ $tag->name }}</a></td>
                         <td>{{ $tag->listings()->count() }}</td>
                     </tr>
