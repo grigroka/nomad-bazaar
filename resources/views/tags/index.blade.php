@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 col-md-offset-2">
             <h1>Tags</h1>
             <table class="table">
                 <thead>
@@ -23,20 +23,6 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-        {{--Create new tag--}}
-        <div class="col-md-3">
-            <div class="well">
-                <h2>Create New Tag</h2>
-                <form action="{{ route('tags.store') }}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control">
-                    </div>
-                    <input type="submit" value="Create New Tag" class="btn btn-primary">
-                </form>
-            </div>
         </div>
     </div>
 

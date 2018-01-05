@@ -12,14 +12,15 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('app.name', 'Nomad Bazaar') }}
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li class="{{ Request::is('listings') ? "active" : "" }}"><a href="/listings">All Listings</a></li>
+                <li class="{{ Request::is('listings') ? "active" : "" }}"><a href="{{ route('listings.index') }}">All Jobs</a></li>
+                <li class="{{ Request::is('tags') ? "active" : "" }}"><a href="{{ route('tags.index') }}">All Tags</a></li>
                 <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
                 <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
             </ul>
@@ -38,7 +39,6 @@
 
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="{{ route('tags.index') }}">Tags</a></li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="{{ route('logout') }}"

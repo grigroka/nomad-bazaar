@@ -8,7 +8,7 @@
             <div class="jumbotron">
                 <h1>Welcome to Nomad Bazaar!</h1>
                 <p>Find the best remote workers all around the world.</p>
-                <a class="btn btn-primary btn-lg" href="{{ route('listings.create') }}" role="button">Add Listing</a>
+                <a class="btn btn-primary btn-lg" href="{{ route('listings.create') }}" role="button">Add New Job</a>
                 <a class="btn btn-primary btn-lg" href="{{ route('listings.index') }}" role="button">View All</a>
             </div>
         </div>

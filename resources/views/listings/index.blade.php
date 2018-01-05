@@ -5,8 +5,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1>All Listings</h1>
-            <small>Total listings: {{ $listings->total() }}</small>
+            <h1>All Jobs</h1>
+            <small>Total jobs: {{ $listings->total() }}</small>
         </div>
     </div>
 

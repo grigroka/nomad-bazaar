@@ -23,4 +23,6 @@ Route::get('about', 'PageController@getAbout');
 
 //Listings routes.
 Route::resource('listings', 'ListingController');
-Route::resource('tags', 'TagController')->except('create');
+//Tags routes.
+Route::get('tags', 'TagController@index')->name('tags.index');
+Route::get('tags/{tag}', 'TagController@show')->name('tags.show');
