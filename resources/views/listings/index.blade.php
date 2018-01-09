@@ -16,7 +16,7 @@
                 <tbody>
                 @foreach($listings as $listing)
                 <tr>
-                    <td>Logo</td>
+                    <td><img src="{{ asset('images/' . $listing->logo) }}" height="75" width="75"></td>
                     <td>
                         {{ $listing->title }}
                         <br>

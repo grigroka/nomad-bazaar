@@ -7,6 +7,8 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use Image;
+use File;
 
 class ListingController extends Controller
 {
@@ -50,7 +52,8 @@ class ListingController extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'company_name' => 'required|max:255',
-            'body' => 'required'
+            'body' => 'required',
+            'logo' => 'sometimes|image'
         ]);
 //        Store in the DB.
         $user = Auth::user()->id;
@@ -60,6 +63,16 @@ class ListingController extends Controller
         $listing->company_name = $request->company_name;
         $listing->body = $request->body;
         $listing->user()->associate($user);
+
+//        Save logo image.
+        if ($request->hasFile('logo')) {
+            $image = $request->file('logo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename);
+            Image::make($image)->resize(125, 125)->save($location);
+
+            $listing->logo = $filename;
+        }
 
         $listing->save();
 
@@ -108,12 +121,27 @@ class ListingController extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'company_name' => 'required|max:255',
-            'body' => 'required'
+            'body' => 'required',
+            'logo' => 'image'
         ]);
 
         $listing->title = $request->title;
         $listing->company_name = $request->company_name;
         $listing->body = $request->body;
+
+        if ($request->hasFile('logo')) {
+//            Add new photo
+            $image = $request->file('logo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename);
+            Image::make($image)->resize(125, 125)->save($location);
+            $oldFilename = $listing->logo;
+//            Update database
+            $listing->logo = $filename;
+//            Delete old photo
+            File::delete(public_path('images/' . $oldFilename));
+        }
+
         $listing->save();
 
         $listing->tags()->sync($request->tags);
@@ -132,6 +160,7 @@ class ListingController extends Controller
     public function destroy(Listing $listing)
     {
         $listing->tags()->detach();
+        File::delete(public_path('images/' . $listing->logo));
         $listing->delete();
 
         Session::flash('success', 'Listing has been deleted.');

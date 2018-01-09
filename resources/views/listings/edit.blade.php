@@ -8,7 +8,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>Edit Listing</h1>
             <hr>
-            <form action="{{ route('listings.update', $listing->id) }}" method="POST">
+            <form action="{{ route('listings.update', $listing->id) }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title:</label>
@@ -17,6 +17,10 @@
                 <div class="form-group">
                     <label for="company_name">Company Name:</label>
                     <textarea id="company_name" name="company_name" class="form-control">{{ $listing->company_name }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="logo">Update Company Logo:</label>
+                    <input id="logo" name="logo" type="file">
                 </div>
                 <div class="form-group">
                     <label for="tags">Tags:</label>

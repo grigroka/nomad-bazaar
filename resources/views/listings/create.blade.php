@@ -7,7 +7,8 @@
         <div class="col-md-8">
             <h1>Create New Listing</h1>
             <hr>
-            <form action="{{ route('listings.store', Auth::user()->id) }}" method="POST">
+            {{--We add enctype="multipart/form-data" to allow file upload--}}
+            <form action="{{ route('listings.store', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title:</label>
@@ -16,6 +17,10 @@
                 <div class="form-group">
                     <label for="company_name">Company Name:</label>
                     <input id="company_name" name="company_name" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="logo">Company Logo:</label>
+                    <input id="logo" name="logo" type="file">
                 </div>
                 <div class="form-group">
                     <label for="tags">Tags:</label>
