@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @section('title', '| New Listing')
 
+@section('stylesheets')
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector:'#body',
+            plugins: 'link',
+            menubar: false
+        });</script>
+@endsection
+
 @section('content')
 
     <div class="row">

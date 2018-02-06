@@ -2,6 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
         @include('partials._head')
+        @yield('stylesheets')
     </head>
     <body>
         @include('partials._nav')
