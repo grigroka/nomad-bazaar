@@ -15,8 +15,7 @@
                 @endforeach
             </div>
             <hr>
-            {{--TODO After implementing editor make body output HTML from DB. Use purifier to clean data before store fucntion.--}}
-            <p>{{ $listing->body }}</p>
+            <p>{!! $listing->body !!}</p>
         </div>
     </div>
 

@@ -9,6 +9,7 @@ use Session;
 use Auth;
 use Image;
 use File;
+use Purifier;
 
 class ListingController extends Controller
 {
@@ -61,7 +62,7 @@ class ListingController extends Controller
 
         $listing->title = $request->title;
         $listing->company_name = $request->company_name;
-        $listing->body = $request->body;
+        $listing->body = Purifier::clean($request->body);
         $listing->user()->associate($user);
 
 //        Save logo image.
@@ -127,7 +128,7 @@ class ListingController extends Controller
 
         $listing->title = $request->title;
         $listing->company_name = $request->company_name;
-        $listing->body = $request->body;
+        $listing->body = Purifier::clean($request->body);
 
         if ($request->hasFile('logo')) {
 //            Add new photo

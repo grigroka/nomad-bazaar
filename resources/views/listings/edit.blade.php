@@ -27,7 +27,7 @@
                     {{--Add [] in select name atribute to get array of multiple selects instead of sum of selects (default)--}}
                     <select name="tags[]" id="tags" multiple="multiple" class="form-control">
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            <option value="{{ $tag->id }}" @foreach($listing->tags as $selectedTags) @if($tag->id == $selectedTags->id)selected="selected"@endif @endforeach>{{ $tag->name }}</option>
                         @endforeach
                     </select>
                     <small>CTRL + Click to select multiple</small>
