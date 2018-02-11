@@ -26,3 +26,5 @@ Route::resource('listings', 'ListingController');
 //Tags routes.
 Route::get('tags', 'TagController@index')->name('tags.index');
 Route::get('tags/{tag}', 'TagController@show')->name('tags.show');
+//Query routes.
+Route::get('queries', 'QueryController@search')->name('queries.search');

@@ -24,6 +24,12 @@
                 <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
                 <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
             </ul>
+            {{--Search Bar--}}
+            <form action="{{ route('queries.search') }}" class="form navbar-form navbar-nav">
+                {{ csrf_field() }}
+                <input type="text" name="search" id="search" class="form-control" placeholder="Search jobs">
+                <input type="submit" value="Search" class="btn btn-success">
+            </form>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
